@@ -1,5 +1,6 @@
 import math
-r=int(input("Введіть радіус кола: "))
+d=int(input("Введіть діаметр кола: "))
+r=d/2
 f=input("P or S: ")
 if f=="S":
     print(f"Площа кола з радіусом {r} це {round(math.pi * r * r,2)}")
