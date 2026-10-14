@@ -5,6 +5,6 @@ if typ=="EUR":
 elif typ=="GBR":
     print(f"{dol} Доларів у {typ} це {dol*0.76}")
 elif typ=="JPY":
-    print(f"{dol} Доларів у {typ} це {dol*158.83}")
+    print(f"{dol} Доларів у {typ} це {round(dol*158.83,1)}")
 else:
     print("Некоректний тип валюти!")
