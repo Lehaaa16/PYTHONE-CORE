@@ -7,12 +7,11 @@ def zp(n1, n2, n3):
         exit()
     clear = 0
     if 0 <= n1 <= 500:
-        clear = n1 + (n1 / 100 * 3)
+        clear = 200 + (n1 / 100 * 3)
     elif 500 < n1 <= 1000:
-        clear = n1 + (n1 / 100 * 5)
+        clear = 200 + (n1 / 100 * 5)
     elif n1 > 1000:
-        clear = n1 + (n1 / 100 * 8)
-
+        clear = 200 + (n1 / 100 * 8)
     if n1 >= n2 and n1 >= n3:
         return clear + 200
     else:
