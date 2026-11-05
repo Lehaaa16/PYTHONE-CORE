@@ -1,0 +1,1 @@
+n, s = int(input("Введіть розмір клітинки: ")), input("Введіть символ для друку: ");[print("".join((s + " " * n) * (n - 1) + s if (j // n + i) % 2 == 0 else " " * len((s + " " * n) * (n - 1) + s) for i in range(8)))for j in range(8 * n)]
