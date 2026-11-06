@@ -38,7 +38,11 @@ while True:
         for i in range(10):
             print("*  " * (10 - i))
     elif n == "к":
-        for i in range(11, 0, -1):
-            print("   " * i + "*  " * (10 - i))
+        for i in range(10, 0, -1):
+            print("   " * (i - 1) + "*  " * (11 - i))
+    elif n == "закінчити":
+        print("\tКінець виконання програми")
+        break
     else:
-        print("Будь ласка, введіть коректний варіант")
+        print("\tf"
+              "Будь ласка, введіть коректний варіант")
