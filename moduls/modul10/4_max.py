@@ -1,5 +1,5 @@
-def maxint(a, b, c, d):
+def mt(a, b, c, d):
+    return max(a,b,c,d)
 
 
-
-maxint(1, 3, 6, -4)
+print(mt(1, 3, 6, -4))

@@ -5,4 +5,4 @@ def s(a):
     return True
 
 
-print(s(6))
+print(s(37))
