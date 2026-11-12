@@ -156,9 +156,9 @@ for i in range(n):
 
         print(f"   Результат -> {p1_str} | {p2_str} | {draws_str}\n")
 
-print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65)
+print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 80)
 print(" 👑 ПІДСУМКОВА ТАБЛИЦЯ ЛІДЕРІВ ТУРНІРУ:")
-print("=" * 65 + f"{Colors.RESET}")
+print("=" * 80 + f"{Colors.RESET}")
 
 # Сортуємо спочатку за виграними матчами, а при рівності — за сумою перемог у раундах
 sorted_leaderboard = sorted(
@@ -181,4 +181,4 @@ for rank, ((name, match_wins), medal) in enumerate(zip(sorted_leaderboard, medal
     print(f"   • Виграно матчів: {Colors.GREEN}{match_wins}{Colors.RESET} із 5")
     print(f"   • Статистика раундів: Перемог: {wins_str} | Поразок: {losses_str} | Нічиїх: {draws_str}")
 
-print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65 + f"{Colors.RESET}")
+print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 80 + f"{Colors.RESET}")
