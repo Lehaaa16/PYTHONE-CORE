@@ -2,7 +2,7 @@ import random
 
 
 class HumanRandom:
-    def __init__(self, name="Обычный человек"):
+    def __init__(self, name="Звичайна людина"):
         self.name = name
         self.choices = ["камень", "ножницы", "бумага"]
         self.last_move = None
@@ -12,7 +12,7 @@ class HumanRandom:
         if self.last_move is None:
             return random.choices(self.choices, weights=[0.4, 0.3, 0.3], k=1)[0]
 
-        # Элементы человеческой психологии (Win-stay / lose-shift)
+        # Елементи людської психології (Win-stay / lose-shift)
         if self.last_result == "win":
             weights_map = {
                 "камень": [0.5, 0.25, 0.25],

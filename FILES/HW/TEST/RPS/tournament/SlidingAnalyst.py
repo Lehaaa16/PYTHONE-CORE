@@ -1,8 +1,7 @@
 import random
 
-
 class SlidingAnalyst:
-    def __init__(self, name="Мастер-Аналитик", window_size=10):
+    def __init__(self, name="Майстер-Аналітик", window_size=10):
         self.name = name
         self.window_size = window_size
         self.opponent_history = []
@@ -19,10 +18,10 @@ class SlidingAnalyst:
         p_scissors = recent.count("ножницы") / total
         p_paper = recent.count("бумага") / total
 
-        # Веса для наших ответов (бьем частые ходы противника)
-        w_rock = 0.2 + 0.6 * p_scissors  # бьем ножницы
-        w_scissors = 0.2 + 0.6 * p_paper  # бьем бумагу
-        w_paper = 0.2 + 0.6 * p_rock  # бьем камень
+        # Ваги для наших відповідей (б'ємо часті ходи противника)
+        w_rock = 0.2 + 0.6 * p_scissors  # б'ємо ножиці
+        w_scissors = 0.2 + 0.6 * p_paper  # б'ємо папір
+        w_paper = 0.2 + 0.6 * p_rock  # б'ємо камінь
 
         return random.choices(self.choices, weights=[w_rock, w_scissors, w_paper], k=1)[0]
 

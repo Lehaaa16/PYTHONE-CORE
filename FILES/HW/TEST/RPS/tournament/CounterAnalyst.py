@@ -1,6 +1,5 @@
 import random
 
-
 class CounterAnalyst:
     def __init__(self, name="Контр-Аналітик"):
         self.name = name
@@ -11,7 +10,7 @@ class CounterAnalyst:
         self.opponent_counts = {"камень": 0, "ножницы": 0, "бумага": 0}
         self.consecutive_copies = 0
 
-        self.detected_class = "UNKNOWN"
+        self.detected_class = "НЕВІДОМО"
         self.class_lock_counter = 0
 
         # Додаткова пам'ять для відстеження динаміки останніх ходів (тренд)
@@ -29,7 +28,7 @@ class CounterAnalyst:
 
         # 🛡️ 1. Детекція дзеркала
         if self.consecutive_copies > 10:
-            self.detected_class = "MIRROR"
+            self.detected_class = "ДЗЕРКАЛО"
 
         # 🔄 2. Розширена класифікація з урахуванням Динаміки (Динамічний Накопичувач vs Упертюх)
         elif current_round % 50 == 0 and self.class_lock_counter == 0:  # Скоротили період перевірки до 50 ходів для гнучкості
@@ -43,11 +42,11 @@ class CounterAnalyst:
             recent_unique_moves = len(set(recent_trend))
 
             if dom_freq > 0.45 and recent_unique_moves <= 2:
-                self.detected_class = "MONOPOLIST"  # Жорсткий упертюх (як Камінь)
+                self.detected_class = "МОНОПОЛІСТ"  # Жорсткий упертюх (як Камінь)
             elif dom_freq > 0.35:
-                self.detected_class = "DYNAMIC_ACCUM"  # Динамічний накопичувач (плавний зсув ваг)
+                self.detected_class = "ДИНАМІЧНИЙ_НАКОПИЧУВАЧ"  # Динамічний накопичувач (плавний зсув ваг)
             else:
-                self.detected_class = "ANALYST"  # Майстер-Аналітик
+                self.detected_class = "АНАЛІТИК"  # Майстер-Аналітик
 
             self.class_lock_counter = 25  # Зменшили блокування до 25 ходів, щоб бот встигав адаптуватися до динаміки!
 
@@ -61,15 +60,15 @@ class CounterAnalyst:
         }
 
         # 🎯 3. ВИБІР ТАКТИКИ ЗАЛЕЖНО ВІД РОЗШИРЕНОГО КЛАСУ
-        if self.detected_class == "MIRROR":
+        if self.detected_class == "ДЗЕРКАЛО":
             smart_move = random.choice(moves)
 
-        elif self.detected_class == "MONOPOLIST":
+        elif self.detected_class == "МОНОПОЛІСТ":
             # Б'ємо прямим контр-ходом упертюха
             dominant_opponent_move = max(self.opponent_counts, key=lambda k: self.opponent_counts[k])
             smart_move = counter_map[dominant_opponent_move]
 
-        elif self.detected_class == "DYNAMIC_ACCUMULATION" or self.detected_class == "DYNAMIC_ACCUM":
+        elif self.detected_class == "ДИНАМІЧНИЙ_НАКОПИЧУВАЧ":
             # Проти Динамічного Накопичувача: дивимося виключно на його коротке вікно (останні 10 ходів),
             # щоб не залежати від застарілої глобальної статистики, яку він сам же й змінює!
             recent_accum_moves = self.opponent_history[-10:]

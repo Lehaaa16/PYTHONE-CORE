@@ -23,8 +23,8 @@ def determine_winner(m1, m2):
     if m1 == m2:
         return "draw"
     elif (m1 == "камень" and m2 == "ножницы") or \
-            (m1 == "ножницы" and m2 == "бумага") or \
-            (m1 == "бумага" and m2 == "камень"):
+         (m1 == "ножницы" and m2 == "бумага") or \
+         (m1 == "бумага" and m2 == "камень"):
         return "p1"
     else:
         return "p2"
@@ -84,8 +84,7 @@ except ValueError:
 
 total_all_games = games_per_duel * 21
 print(f"\n{Colors.RED}{Colors.BOLD}⚠️ УВАГА: Оскільки учасників 7, усього пройде 21 парна дуель.")
-print(
-    f"Загальна кількість зіграних раундів у всьому турнірі складе: {total_all_games} ({games_per_duel} × 21){Colors.RESET}\n")
+print(f"Загальна кількість зіграних раундів у всьому турнірі складе: {total_all_games} ({games_per_duel} × 21){Colors.RESET}\n")
 
 input(f"{Colors.HEADER}{Colors.BOLD}Натисніть Enter, щоб запустити турнір...{Colors.RESET}")
 
@@ -139,8 +138,7 @@ for i in range(n):
         total_rounds_stats[p2.name]["losses"] += w1
         total_rounds_stats[p2.name]["draws"] += match_draws
 
-        print(
-            f"{Colors.CYAN}⚔️ Дуель:{Colors.RESET} {Colors.BOLD}{p1.name}{Colors.RESET} vs {Colors.BOLD}{p2.name}{Colors.RESET}")
+        print(f"{Colors.CYAN}⚔️ Дуель:{Colors.RESET} {Colors.BOLD}{p1.name}{Colors.RESET} vs {Colors.BOLD}{p2.name}{Colors.RESET}")
 
         if w1 > w2:
             p1_str = f"{Colors.GREEN}{p1.name}: {w1}{Colors.RESET}"
@@ -156,7 +154,7 @@ for i in range(n):
 
         draws_str = f"Нічиїх: {Colors.YELLOW}{match_draws}{Colors.RESET}"
 
-        print(f"   Результат -> {p1_str} | {p2_str} | {draws_str}\n")
+        print(f"    Результат -> {p1_str} | {p2_str} | {draws_str}\n")
 
 print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65)
 print(" 👑 ПІДСУМКОВА ТАБЛИЦЯ ЛІДЕРІВ ТУРНІРУ:")

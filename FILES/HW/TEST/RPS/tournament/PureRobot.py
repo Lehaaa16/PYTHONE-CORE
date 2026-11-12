@@ -1,5 +1,6 @@
 import random
 
+
 class PureRobot:
     def __init__(self, name="Робот-Рандомайзер"):
         self.name = name

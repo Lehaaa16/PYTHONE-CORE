@@ -1,7 +1,7 @@
 import random
 
 class TitForTat:
-    def __init__(self, name="Подражатель"):
+    def __init__(self, name="Наслідувач"):
         self.name = name
         self.last_opponent_move = None
         self.choices = ["камень", "ножницы", "бумага"]
