@@ -1,10 +1,10 @@
-from SlidingAnalyst import SlidingAnalyst
-from CumulativeAnalyst import CumulativeAnalyst
-from CounterAnalyst import CounterAnalyst
-from TitForTat import TitForTat
-from Stubborn_human import StubbornHuman
-from HumanRandom import HumanRandom
-from PureRobot import PureRobot
+from agents.SlidingAnalyst import SlidingAnalyst
+from agents.CumulativeAnalyst import CumulativeAnalyst
+from agents.CounterAnalyst import CounterAnalyst
+from agents.TitForTat import TitForTat
+from agents.Stubborn_human import StubbornHuman
+from agents.HumanRandom import HumanRandom
+from agents.PureRobot import PureRobot
 
 
 # ANSI-коди для красивого кольорового виведення в консолі
