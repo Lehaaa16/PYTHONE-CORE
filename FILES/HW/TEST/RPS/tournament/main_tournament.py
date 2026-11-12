@@ -35,7 +35,7 @@ def play_match(player1, player2, games_count):
     p2_wins = 0
     local_draws = 0
 
-    # Скидання стану перед матчем
+    # Скидання стану перед матчем для всіх можливих атрибутів ботів
     for p in (player1, player2):
         if hasattr(p, 'opponent_history'): p.opponent_history = []
         if hasattr(p, 'my_history'): p.my_history = []
@@ -95,17 +95,17 @@ print(" 🤖 УЧАСНИКИ ТУРНІРУ ТА ЇХНІ СТРАТЕГІЇ:")
 print("=" * 65 + f"{Colors.RESET}")
 print(f"1. {Colors.BOLD}Майстер-Аналітик{Colors.RESET}: Аналізує останні 10 ходів суперника (ковзне вікно).")
 print(f"2. {Colors.BOLD}Динамічний Накопичувач{Colors.RESET}: Збільшує шанс контр-ходу на +1% за раунд (до 80%).")
-print(f"3. {Colors.BOLD}CounterAnalyst{Colors.RESET}: Анти-аналітик, що перераховує логіку ворога наперед.")
+print(f"3. {Colors.BOLD}Контр-Аналітик{Colors.RESET}: Стратег другого порядку, що прораховує кроки аналітиків наперед.")
 print(f"4. {Colors.BOLD}Наслідувач{Colors.RESET}: Реалізує тактику 'Око за око' (Tit-for-Tat) — копіює минулий хід.")
 print(f"5. {Colors.BOLD}Упертюх (Камінь){Colors.RESET}: Людина з перекосом характеру, що обожнює камінь (60%).")
 print(f"6. {Colors.BOLD}Звичайна людина{Colors.RESET}: Симулює людську психологію (Win-Stay / Lose-Shift).")
 print(f"7. {Colors.BOLD}Робот-Рандомайзер{Colors.RESET}: Класичний чистий рандом (33%/33%/33%).\n")
 
-# Список усіх учасників (тепер їх 7!)
+# Список усіх учасників (7 ботів)
 players_classes = [
     lambda: SlidingAnalyst("Майстер-Аналітик"),
     lambda: CumulativeAnalyst("Динамічний Накопичувач"),
-    lambda: CounterAnalyst("CounterAnalyst"),
+    lambda: CounterAnalyst("Контр-Аналітик"),
     lambda: TitForTat("Наслідувач"),
     lambda: StubbornHuman("Упертюх (Камінь)"),
     lambda: HumanRandom("Звичайна людина"),
