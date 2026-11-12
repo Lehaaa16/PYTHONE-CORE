@@ -1,4 +1,5 @@
 from SlidingAnalyst import SlidingAnalyst
+from CumulativeAnalyst import CumulativeAnalyst
 from TitForTat import TitForTat
 from Stubborn_human import StubbornHuman
 from HumanRandom import HumanRandom
@@ -69,7 +70,7 @@ def play_match(player1, player2, games_count):
 
 # --- ІНТЕРАКТИВНЕ ВВЕДЕННЯ КІЛЬКОСТІ ІГОР ---
 print(f"{Colors.YELLOW}{Colors.BOLD}=== НАЛАШТУВАННЯ ТУРНІРУ З КАМІНЬ-НОЖИЦІ-ПАПІР ==={Colors.RESET}")
-print(f"{Colors.GREEN}У турнірі беруть участь 5 ботів. Усього буде зіграно 10 парних дуелей.{Colors.RESET}")
+print(f"{Colors.GREEN}У турнірі беруть участь 6 ботів. Усього буде зіграно 15 парних дуелей.{Colors.RESET}")
 user_input = input(f"{Colors.BLUE}Введіть кількість матчів для однієї дуелі: {Colors.RESET}")
 
 try:
@@ -78,10 +79,10 @@ except ValueError:
     games_per_duel = 1000
     print(f"{Colors.RED}Введено не число! Автоматично встановлено значення за замовчуванням: 1000.{Colors.RESET}")
 
-total_all_games = games_per_duel * 10
-print(f"\n{Colors.RED}{Colors.BOLD}⚠️ УВАГА: Оскільки учасників 5, усього пройде 10 парних дуелей.")
+total_all_games = games_per_duel * 15
+print(f"\n{Colors.RED}{Colors.BOLD}⚠️ УВАГА: Оскільки учасників 6, усього пройде 15 парних дуелей.")
 print(
-    f"Загальна кількість зіграних раундів у всьому турнірі складе: {total_all_games} ({games_per_duel} × 10){Colors.RESET}\n")
+    f"Загальна кількість зіграних раундів у всьому турнірі складе: {total_all_games} ({games_per_duel} × 15){Colors.RESET}\n")
 
 input(f"{Colors.HEADER}{Colors.BOLD}Натисніть Enter, щоб запустити турнір...{Colors.RESET}")
 
@@ -90,23 +91,26 @@ print(f"\n{Colors.HEADER}{Colors.BOLD}" + "=" * 65)
 print(" 🤖 УЧАСНИКИ ТУРНІРУ ТА ЇХНІ СТРАТЕГІЇ:")
 print("=" * 65 + f"{Colors.RESET}")
 print(
-    f"1. {Colors.BOLD}Майстер-Аналітик{Colors.RESET}: Аналізує останні 10 ходів суперника та плавно підлаштовує ваги.")
+    f"1. {Colors.BOLD}Майстер-Аналітик{Colors.RESET}: Аналізує останні 10 ходів суперника (ковзне вікно).")
 print(
-    f"2. {Colors.BOLD}Наслідувач{Colors.RESET}: Реалізує тактику 'Око за око' (Tit-for-Tat) — копіює минулий хід супротивника.")
-print(f"3. {Colors.BOLD}Упертюх (Камінь){Colors.RESET}: Людина з перекосом характеру, що обожнює кидати камінь (60%).")
-print(f"4. {Colors.BOLD}Звичайна людина{Colors.RESET}: Симулює людську психологію (Win-Stay / Lose-Shift).")
-print(f"5. {Colors.BOLD}Робот-Рандомайзер{Colors.RESET}: Класичний чистий рандом (33%/33%/33%).\n")
+    f"2. {Colors.BOLD}Динамічний Накопичувач{Colors.RESET}: Збільшує шанс контр-ходу на +1% за раунд (до 80%).")
+print(
+    f"3. {Colors.BOLD}Наслідувач{Colors.RESET}: Реалізує тактику 'Око за око' (Tit-for-Tat) — копіює минулий хід.")
+print(f"4. {Colors.BOLD}Упертюх (Камінь){Colors.RESET}: Людина з перекосом характеру, що обожнює камінь (60%).")
+print(f"5. {Colors.BOLD}Звичайна людина{Colors.RESET}: Симулює людську психологію (Win-Stay / Lose-Shift).")
+print(f"6. {Colors.BOLD}Робот-Рандомайзер{Colors.RESET}: Класичний чистий рандом (33%/33%/33%).\n")
 
-# Список усіх учасників
+# Список усіх учасників (6 ботів)
 players_classes = [
     lambda: SlidingAnalyst("Майстер-Аналітик"),
+    lambda: CumulativeAnalyst("Динамічний Накопичувач"),
     lambda: TitForTat("Наслідувач"),
     lambda: StubbornHuman("Упертюх (Камінь)"),
     lambda: HumanRandom("Звичайна людина"),
     lambda: PureRobot("Робот-Рандомайзер")
 ]
 
-# Статистика: перемоги в матчах та загальні очки (виграні раунди/нічиї/програші)
+# Статистика: перемоги в матчах та загальні очки
 match_scores = {cls().name: 0 for cls in players_classes}
 total_rounds_stats = {cls().name: {"wins": 0, "losses": 0, "draws": 0} for cls in players_classes}
 
@@ -163,7 +167,7 @@ sorted_leaderboard = sorted(
     reverse=True
 )
 
-medals = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"]
+medals = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣", "6️⃣"]
 
 for rank, ((name, match_wins), medal) in enumerate(zip(sorted_leaderboard, medals), 1):
     r_stats = total_rounds_stats[name]
@@ -174,7 +178,7 @@ for rank, ((name, match_wins), medal) in enumerate(zip(sorted_leaderboard, medal
     draws_str = f"{Colors.YELLOW}{r_stats['draws']}{Colors.RESET}"
 
     print(f"{medal} {Colors.BOLD}{name}{Colors.RESET}")
-    print(f"   • Виграно матчів: {Colors.GREEN}{match_wins}{Colors.RESET} із 4")
+    print(f"   • Виграно матчів: {Colors.GREEN}{match_wins}{Colors.RESET} із 5")
     print(f"   • Статистика раундів: Перемог: {wins_str} | Поразок: {losses_str} | Нічиїх: {draws_str}")
 
 print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65 + f"{Colors.RESET}")
