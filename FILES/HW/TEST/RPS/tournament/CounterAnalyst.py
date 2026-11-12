@@ -1,7 +1,7 @@
 import random
 
 
-class SmartMetaBot:
+class CounterAnalyst:
     def __init__(self, name="Мета-Лис"):
         self.name = name
         self.opponent_history = []
