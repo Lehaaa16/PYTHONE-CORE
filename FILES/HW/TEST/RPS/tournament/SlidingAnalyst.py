@@ -1,11 +1,12 @@
 import random
 
+
 class SlidingAnalyst:
     def __init__(self, name="Майстер-Аналітик", window_size=10):
         self.name = name
         self.window_size = window_size
         self.opponent_history = []
-        self.choices = ["камень", "ножницы", "бумага"]
+        self.choices = ["камінь", "ножиці", "папір"]
 
     def make_move(self):
         if len(self.opponent_history) < 3:
@@ -14,9 +15,9 @@ class SlidingAnalyst:
         recent = self.opponent_history[-self.window_size:]
         total = len(recent)
 
-        p_rock = recent.count("камень") / total
-        p_scissors = recent.count("ножницы") / total
-        p_paper = recent.count("бумага") / total
+        p_rock = recent.count("камінь") / total
+        p_scissors = recent.count("ножиці") / total
+        p_paper = recent.count("папір") / total
 
         # Ваги для наших відповідей (б'ємо часті ходи противника)
         w_rock = 0.2 + 0.6 * p_scissors  # б'ємо ножиці

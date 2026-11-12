@@ -4,7 +4,7 @@ import random
 class HumanRandom:
     def __init__(self, name="Звичайна людина"):
         self.name = name
-        self.choices = ["камень", "ножницы", "бумага"]
+        self.choices = ["камінь", "ножиці", "папір"]
         self.last_move = None
         self.last_result = "draw"
 
@@ -15,16 +15,16 @@ class HumanRandom:
         # Елементи людської психології (Win-stay / lose-shift)
         if self.last_result == "win":
             weights_map = {
-                "камень": [0.5, 0.25, 0.25],
-                "ножницы": [0.25, 0.5, 0.25],
-                "бумага": [0.25, 0.25, 0.5]
+                "камінь": [0.5, 0.25, 0.25],
+                "ножиці": [0.25, 0.5, 0.25],
+                "папір": [0.25, 0.25, 0.5]
             }
             weights = weights_map.get(self.last_move, [0.33, 0.33, 0.34])
         elif self.last_result == "loss":
             weights_map = {
-                "камень": [0.2, 0.4, 0.4],
-                "ножницы": [0.4, 0.2, 0.4],
-                "бумага": [0.4, 0.4, 0.2]
+                "камінь": [0.2, 0.4, 0.4],
+                "ножиці": [0.4, 0.2, 0.4],
+                "папір": [0.4, 0.4, 0.2]
             }
             weights = weights_map.get(self.last_move, [0.33, 0.33, 0.34])
         else:

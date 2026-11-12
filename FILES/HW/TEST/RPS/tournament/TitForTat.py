@@ -4,7 +4,7 @@ class TitForTat:
     def __init__(self, name="Наслідувач"):
         self.name = name
         self.last_opponent_move = None
-        self.choices = ["камень", "ножницы", "бумага"]
+        self.choices = ["камінь", "ножиці", "папір"]
 
     def make_move(self):
         if self.last_opponent_move is None:

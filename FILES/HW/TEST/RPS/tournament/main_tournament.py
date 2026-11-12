@@ -22,9 +22,9 @@ class Colors:
 def determine_winner(m1, m2):
     if m1 == m2:
         return "draw"
-    elif (m1 == "камень" and m2 == "ножницы") or \
-         (m1 == "ножницы" and m2 == "бумага") or \
-         (m1 == "бумага" and m2 == "камень"):
+    elif (m1 == "камінь" and m2 == "ножиці") or \
+         (m1 == "ножиці" and m2 == "папір") or \
+         (m1 == "папір" and m2 == "камінь"):
         return "p1"
     else:
         return "p2"
@@ -39,7 +39,7 @@ def play_match(player1, player2, games_count):
     for p in (player1, player2):
         if hasattr(p, 'opponent_history'): p.opponent_history = []
         if hasattr(p, 'my_history'): p.my_history = []
-        if hasattr(p, 'counts'): p.counts = {"камень": 0, "ножницы": 0, "бумага": 0}
+        if hasattr(p, 'counts'): p.counts = {"камінь": 0, "ножиці": 0, "папір": 0}
         if hasattr(p, 'last_opponent_move'): p.last_opponent_move = None
         if hasattr(p, 'last_move'): p.last_move = None
         if hasattr(p, 'last_result'): p.last_result = "draw"

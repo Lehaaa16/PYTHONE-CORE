@@ -6,10 +6,10 @@ class CumulativeAnalyst:
         self.name = name
         self.opponent_history = []
         # Одразу зберігаємо лічильники, щоб не перераховувати всю історію щоразу!
-        self.counts = {"камень": 0, "ножницы": 0, "бумага": 0}
+        self.counts = {"камінь": 0, "ножиці": 0, "папір": 0}
 
     def make_move(self):
-        moves = ["камень", "ножницы", "бумага"]
+        moves = ["камінь", "ножиці", "папір"]
 
         # Якщо історії ще немає, ходимо випадково
         if not self.opponent_history:
@@ -20,9 +20,9 @@ class CumulativeAnalyst:
 
         # Визначаємо ідеальний контр-хід проти улюбленого знака суперника
         counter_map = {
-            "камень": "бумага",  # папір б'є камінь
-            "ножницы": "камень",  # камінь б'є ножиці
-            "бумага": "ножницы"  # ножиці б'ють папір
+            "камінь": "папір",  # папір б'є камінь
+            "ножиці": "камінь",  # камінь б'є ножиці
+            "папір": "ножиці"  # ножиці б'ють папір
         }
         optimal_counter = counter_map[most_frequent]
 
@@ -32,6 +32,7 @@ class CumulativeAnalyst:
 
         other_moves = [m for m in moves if m != optimal_counter]
         remaining_prob = 1.0 - counter_prob
+
         other_prob = remaining_prob / len(other_moves)
 
         # Формуємо ймовірності для вибору руху

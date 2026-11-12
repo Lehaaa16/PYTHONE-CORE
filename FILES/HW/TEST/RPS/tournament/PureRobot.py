@@ -4,7 +4,7 @@ import random
 class PureRobot:
     def __init__(self, name="Робот-Рандомайзер"):
         self.name = name
-        self.choices = ["камень", "ножницы", "бумага"]
+        self.choices = ["камінь", "ножиці", "папір"]
 
     def make_move(self):
         return random.choice(self.choices)
