@@ -5,7 +5,7 @@ from HumanRandom import HumanRandom
 from PureRobot import PureRobot
 
 
-# ANSI-коды для красивого цветного вывода в консоли
+# ANSI-коди для красивого кольорового виведення в консолі
 class Colors:
     HEADER = '\033[95m'
     BLUE = '\033[94m'
@@ -33,7 +33,7 @@ def play_match(player1, player2, games_count):
     p2_wins = 0
     local_draws = 0
 
-    # Сброс состояния перед матчем
+    # Скидання стану перед матчем
     for p in (player1, player2):
         if hasattr(p, 'opponent_history'): p.opponent_history = []
         if hasattr(p, 'last_opponent_move'): p.last_opponent_move = None
@@ -67,56 +67,56 @@ def play_match(player1, player2, games_count):
     return p1_wins, p2_wins, local_draws
 
 
-# --- ИНТЕРАКТИВНЫЙ ВВОД КОЛИЧЕСТВА ИГР ---
-print(f"{Colors.YELLOW}{Colors.BOLD}=== НАСТРОЙКА ТУРНИРА ПО КАМЕНЬ-НОЖНИЦЫ-БУМАГА ==={Colors.RESET}")
-print(f"{Colors.GREEN}В турнире участвуют 5 ботов. Всего будет сыграно 10 парных дуэлей.{Colors.RESET}")
-user_input = input(f"{Colors.BLUE}Введите количество матчей для одной дуэли: {Colors.RESET}")
+# --- ІНТЕРАКТИВНЕ ВВЕДЕННЯ КІЛЬКОСТІ ІГОР ---
+print(f"{Colors.YELLOW}{Colors.BOLD}=== НАЛАШТУВАННЯ ТУРНІРУ З КАМІНЬ-НОЖИЦІ-ПАПІР ==={Colors.RESET}")
+print(f"{Colors.GREEN}У турнірі беруть участь 5 ботів. Усього буде зіграно 10 парних дуелей.{Colors.RESET}")
+user_input = input(f"{Colors.BLUE}Введіть кількість матчів для однієї дуелі: {Colors.RESET}")
 
 try:
     games_per_duel = int(user_input)
 except ValueError:
     games_per_duel = 1000
-    print(f"{Colors.RED}Введено не число! Автоматически установлено значение по умолчанию: 1000.{Colors.RESET}")
+    print(f"{Colors.RED}Введено не число! Автоматично встановлено значення за замовчуванням: 1000.{Colors.RESET}")
 
 total_all_games = games_per_duel * 10
-print(f"\n{Colors.RED}{Colors.BOLD}⚠️ ВНИМАНИЕ: Так как участников 5, всего пройдет 10 парных дуэлей.")
+print(f"\n{Colors.RED}{Colors.BOLD}⚠️ УВАГА: Оскільки учасників 5, усього пройде 10 парних дуелей.")
 print(
-    f"Общее количество сыгранных раундов во всем турнире составит: {total_all_games} ({games_per_duel} × 10){Colors.RESET}\n")
+    f"Загальна кількість зіграних раундів у всьому турнірі складе: {total_all_games} ({games_per_duel} × 10){Colors.RESET}\n")
 
-input(f"{Colors.HEADER}{Colors.BOLD}Нажмите Enter, чтобы запустить турнир...{Colors.RESET}")
+input(f"{Colors.HEADER}{Colors.BOLD}Натисніть Enter, щоб запустити турнір...{Colors.RESET}")
 
-# Описание участников
+# Опис учасників
 print(f"\n{Colors.HEADER}{Colors.BOLD}" + "=" * 65)
-print(" 🤖 УЧАСТНИКИ ТУРНИРА И ИХ СТРАТЕГИИ:")
+print(" 🤖 УЧАСНИКИ ТУРНІРУ ТА ЇХНІ СТРАТЕГІЇ:")
 print("=" * 65 + f"{Colors.RESET}")
 print(
-    f"1. {Colors.BOLD}Мастер-Аналитик{Colors.RESET}: Анализирует последние 10 ходов соперника и плавно подстраивает веса.")
+    f"1. {Colors.BOLD}Майстер-Аналітик{Colors.RESET}: Аналізує останні 10 ходів суперника та плавно підлаштовує ваги.")
 print(
-    f"2. {Colors.BOLD}Подражатель{Colors.RESET}: Реализует тактику 'Око за око' (Tit-for-Tat) — копирует прошлый ход противника.")
-print(f"3. {Colors.BOLD}Упрямец (Камень){Colors.RESET}: Человек с перекосом характера, обожающий кидать камень (60%).")
-print(f"4. {Colors.BOLD}Обычный человек{Colors.RESET}: Симулирует человеческую психологию (Win-Stay / Lose-Shift).")
-print(f"5. {Colors.BOLD}Робот-Рандомайзер{Colors.RESET}: Классический чистый рандом (33%/33%/33%).\n")
+    f"2. {Colors.BOLD}Наслідувач{Colors.RESET}: Реалізує тактику 'Око за око' (Tit-for-Tat) — копіює минулий хід супротивника.")
+print(f"3. {Colors.BOLD}Упертюх (Камінь){Colors.RESET}: Людина з перекосом характеру, що обожнює кидати камінь (60%).")
+print(f"4. {Colors.BOLD}Звичайна людина{Colors.RESET}: Симулює людську психологію (Win-Stay / Lose-Shift).")
+print(f"5. {Colors.BOLD}Робот-Рандомайзер{Colors.RESET}: Класичний чистий рандом (33%/33%/33%).\n")
 
-# Список всех участников
+# Список усіх учасників
 players_classes = [
-    lambda: SlidingAnalyst("Мастер-Аналитик"),
-    lambda: TitForTat("Подражатель"),
-    lambda: StubbornHuman("Упрямец (Камень)"),
-    lambda: HumanRandom("Обычный человек"),
+    lambda: SlidingAnalyst("Майстер-Аналітик"),
+    lambda: TitForTat("Наслідувач"),
+    lambda: StubbornHuman("Упертюх (Камінь)"),
+    lambda: HumanRandom("Звичайна людина"),
     lambda: PureRobot("Робот-Рандомайзер")
 ]
 
-# Статистика: победы в матчах и общие очки (выигранные раунды/ничьи/проигрыши)
+# Статистика: перемоги в матчах та загальні очки (виграні раунди/нічиї/програші)
 match_scores = {cls().name: 0 for cls in players_classes}
 total_rounds_stats = {cls().name: {"wins": 0, "losses": 0, "draws": 0} for cls in players_classes}
 
 print(f"{Colors.HEADER}{Colors.BOLD}" + "=" * 65)
-print(" 🏆 НАЧАЛО КРУГОВОГО ТУРНИРА 🏆")
+print(" 🏆 ПОЧАТОК КРУГОВОГО ТУРНІРУ 🏆")
 print("=" * 65 + f"{Colors.RESET}\n")
 
 n = len(players_classes)
 
-# Круговой турнир
+# Коловий турнір
 for i in range(n):
     for j in range(i + 1, n):
         p1 = players_classes[i]()
@@ -124,7 +124,7 @@ for i in range(n):
 
         w1, w2, match_draws = play_match(p1, p2, games_per_duel)
 
-        # Собираем статистику раундов
+        # Збираємо статистику раундів
         total_rounds_stats[p1.name]["wins"] += w1
         total_rounds_stats[p1.name]["losses"] += w2
         total_rounds_stats[p1.name]["draws"] += match_draws
@@ -134,7 +134,7 @@ for i in range(n):
         total_rounds_stats[p2.name]["draws"] += match_draws
 
         print(
-            f"{Colors.CYAN}⚔️ Дуэль:{Colors.RESET} {Colors.BOLD}{p1.name}{Colors.RESET} vs {Colors.BOLD}{p2.name}{Colors.RESET}")
+            f"{Colors.CYAN}⚔️ Дуель:{Colors.RESET} {Colors.BOLD}{p1.name}{Colors.RESET} vs {Colors.BOLD}{p2.name}{Colors.RESET}")
 
         if w1 > w2:
             p1_str = f"{Colors.GREEN}{p1.name}: {w1}{Colors.RESET}"
@@ -148,15 +148,15 @@ for i in range(n):
             p1_str = f"{p1.name}: {w1}"
             p2_str = f"{p2.name}: {w2}"
 
-        draws_str = f"Ничьих: {Colors.YELLOW}{match_draws}{Colors.RESET}"
+        draws_str = f"Нічиїх: {Colors.YELLOW}{match_draws}{Colors.RESET}"
 
         print(f"   Результат -> {p1_str} | {p2_str} | {draws_str}\n")
 
 print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65)
-print(" 👑 ИТОГОВАЯ ТАБЛИЦА ЛИДЕРОВ ТУРНИРА:")
+print(" 👑 ПІДСУМКОВА ТАБЛИЦЯ ЛІДЕРІВ ТУРНІРУ:")
 print("=" * 65 + f"{Colors.RESET}")
 
-# Сортируем сначала по выигранным матчам, а при равенстве — по сумме побед в раундах
+# Сортуємо спочатку за виграними матчами, а при рівності — за сумою перемог у раундах
 sorted_leaderboard = sorted(
     match_scores.items(),
     key=lambda item: (item[1], total_rounds_stats[item[0]]["wins"]),
@@ -168,13 +168,13 @@ medals = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"]
 for rank, ((name, match_wins), medal) in enumerate(zip(sorted_leaderboard, medals), 1):
     r_stats = total_rounds_stats[name]
 
-    # Цветные переменные для итоговой статистики раундов
+    # Кольорові змінні для підсумкової статистики раундів
     wins_str = f"{Colors.GREEN}{r_stats['wins']}{Colors.RESET}"
     losses_str = f"{Colors.RED}{r_stats['losses']}{Colors.RESET}"
     draws_str = f"{Colors.YELLOW}{r_stats['draws']}{Colors.RESET}"
 
     print(f"{medal} {Colors.BOLD}{name}{Colors.RESET}")
-    print(f"   • Выиграно матчей: {Colors.GREEN}{match_wins}{Colors.RESET} из 4")
-    print(f"   • Статистика раундов: Побед: {wins_str} | Поражений: {losses_str} | Ничьих: {draws_str}")
+    print(f"   • Виграно матчів: {Colors.GREEN}{match_wins}{Colors.RESET} із 4")
+    print(f"   • Статистика раундів: Перемог: {wins_str} | Поразок: {losses_str} | Нічиїх: {draws_str}")
 
 print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65 + f"{Colors.RESET}")
