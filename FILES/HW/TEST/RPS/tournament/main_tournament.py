@@ -89,9 +89,9 @@ print(f"Загальна кількість зіграних раундів у �
 input(f"{Colors.HEADER}{Colors.BOLD}Натисніть Enter, щоб запустити турнір...{Colors.RESET}")
 
 # Опис учасників
-print(f"\n{Colors.HEADER}{Colors.BOLD}" + "=" * 65)
+print(f"\n{Colors.HEADER}{Colors.BOLD}" + "=" * 80)
 print(" 🤖 УЧАСНИКИ ТУРНІРУ ТА ЇХНІ СТРАТЕГІЇ:")
-print("=" * 65 + f"{Colors.RESET}")
+print("=" * 80 + f"{Colors.RESET}")
 print(f"1. {Colors.BOLD}Майстер-Аналітик{Colors.RESET}: Аналізує останні 10 ходів суперника (ковзне вікно).")
 print(f"2. {Colors.BOLD}Динамічний Накопичувач{Colors.RESET}: Збільшує шанс контр-ходу на +1% за раунд (до 80%).")
 print(f"3. {Colors.BOLD}Контр-Аналітик{Colors.RESET}: Стратег другого порядку, що прораховує кроки аналітиків наперед.")
@@ -115,9 +115,9 @@ players_classes = [
 match_scores = {cls().name: 0 for cls in players_classes}
 total_rounds_stats = {cls().name: {"wins": 0, "losses": 0, "draws": 0} for cls in players_classes}
 
-print(f"{Colors.HEADER}{Colors.BOLD}" + "=" * 65)
+print(f"{Colors.HEADER}{Colors.BOLD}" + "=" * 80)
 print(" 🏆 ПОЧАТОК КРУГОВОГО ТУРНІРУ 🏆")
-print("=" * 65 + f"{Colors.RESET}\n")
+print("=" * 80 + f"{Colors.RESET}\n")
 
 n = len(players_classes)
 
@@ -156,9 +156,9 @@ for i in range(n):
 
         print(f"    Результат -> {p1_str} | {p2_str} | {draws_str}\n")
 
-print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65)
+print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 80)
 print(" 👑 ПІДСУМКОВА ТАБЛИЦЯ ЛІДЕРІВ ТУРНІРУ:")
-print("=" * 65 + f"{Colors.RESET}")
+print("=" * 80 + f"{Colors.RESET}")
 
 # Сортуємо спочатку за виграними матчами, а при рівності — за сумою перемог у раундах
 sorted_leaderboard = sorted(
@@ -181,4 +181,4 @@ for rank, ((name, match_wins), medal) in enumerate(zip(sorted_leaderboard, medal
     print(f"   • Виграно матчів: {Colors.GREEN}{match_wins}{Colors.RESET} із 6")
     print(f"   • Статистика раундів: Перемог: {wins_str} | Поразок: {losses_str} | Нічиїх: {draws_str}")
 
-print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 65 + f"{Colors.RESET}")
+print(f"{Colors.YELLOW}{Colors.BOLD}" + "=" * 80 + f"{Colors.RESET}")
