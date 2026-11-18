@@ -1,6 +1,7 @@
 BLUE = '\033[94m'
 RESET = '\033[0m'
 
+
 def list_make():
     l = []
     i = 0
