@@ -8,5 +8,4 @@ def rev(l):
     print(l)
 
 
-a = list_make()
-rev(a)
+rev(list_make())
