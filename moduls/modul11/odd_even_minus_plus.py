@@ -16,7 +16,7 @@ def open(l):
         elif l[i] < 0:
             neg += 1
     print(f"\tЗагалом: {len(l)}")
-    print(f"{GREEN}Парних: {even}\n{RED}Непарних: {odd}\n{BLUE}Додатніх: {pos}\n{CYAN}Від'ємних: {neg}")
+    print(f"{BLUE}Парних: {even}\n{CYAN}Непарних: {odd}\n{GREEN}Додатніх: {pos}\n{RED}Від'ємних: {neg}")
 
 
 open([1, -5, -7345, 67, 45, 33, 44, 55, 77, -55, -88, -999])
