@@ -1,3 +1,5 @@
+from list_make import list_make
+
 RED = '\033[91m'
 GREEN = '\033[92m'
 BLUE = '\033[94m'
@@ -15,8 +17,8 @@ def open(l):
             pos += 1
         elif l[i] < 0:
             neg += 1
-    print(f"\tЗагалом: {len(l)}")
+    print(f"\n\tЗагалом: {len(l)}")
     print(f"{BLUE}Парних: {even}\n{CYAN}Непарних: {odd}\n{GREEN}Додатніх: {pos}\n{RED}Від'ємних: {neg}")
 
 
-open([1, -5, -7345, 67, 45, 33, 44, 55, 77, -55, -88, -999])
+open(list_make())
