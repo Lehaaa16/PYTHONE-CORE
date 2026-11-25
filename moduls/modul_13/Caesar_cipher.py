@@ -6,8 +6,8 @@ alphabets = [
     languages.eng_low,
     languages.eng_up
 ]
-k = int(input("Введіть ключ: "))
 t = input("Введіть текст: ")
+k = int(input("Введіть ключ: "))
 
 
 def encrypt(text, key):
