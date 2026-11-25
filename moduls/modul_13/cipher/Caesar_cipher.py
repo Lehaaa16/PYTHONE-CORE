@@ -6,7 +6,7 @@ alphabets = [
     languages.eng_low,
     languages.eng_up
 ]
-t = input("Введіть текст: ")
+t = str(input("Введіть текст: "))
 k = int(input("Введіть ключ: "))
 
 
