@@ -23,4 +23,9 @@ print(f"\t\t{BOLD}{CYAN}=== Програма шифрування методом
 text = input(f"{BRIGHT_BLUE}Будь ласка, введіть вихідне повідомлення для шифрування: ")
 key = int(input(f"Введіть числовий ключ (діаметр стержня / кількість стовпців): {RESET}"))
 
-print(f"\n{BOLD}{YELLOW}Результат шифрування:{RESET} {GREEN}{s_c(text, key)}{RESET}")
+result = s_c(text, key)
+with open("Result", "w", encoding="utf-8") as f:
+    f.write(f"{str(result)}\n")
+    f.write(str(key))
+
+print(f"\n\t\t{BOLD}{YELLOW}=== Результат шифрування успішно збережено! ==={RESET}")
